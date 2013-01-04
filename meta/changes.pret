@@ -4,3 +4,9 @@
 	issued  2013-01-03;
 	label   "Initial release".
 
+`Sub-NonRole 0.002 cpan:TOBYINK`
+	issued  2013-01-04;
+	changeset [
+		item "Support for MooseX::Role::Parameterizable roles."^^Addition;
+	].
+
