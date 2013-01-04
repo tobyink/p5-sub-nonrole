@@ -58,19 +58,38 @@ sub _post_process
 		} $caller;
 	}
 	
-	if ($INC{'Class/MOP.pm'}
-	and my $class_of = 'Class::MOP'->can('class_of'))
+	$INC{'Class/MOP.pm'} or return;
+	my $class_of = 'Class::MOP'->can('class_of') or return;
+	
+	require Moose::Util::MetaRole;
+	_mk_moose_trait();
+	my $meta = $class_of->($caller);
+	
+	if ($meta->can('has_role_generator')) # lolcat
 	{
-		require Moose::Util::MetaRole;
-		_mk_moose_trait();
-		Moose::Util::MetaRole::apply_metaroles(
+		_mk_moose_trait_param();
+		my $P_mc = $meta->parameters_metaclass;
+		my $P_rg = $meta->role_generator;
+		$meta = Moose::Util::MetaRole::apply_metaroles(
+			for => $caller,
+			role_metaroles => {
+				role => ['Sub::NonRole::Trait::ParameterizableRole'],
+			},
+		);
+		$meta->parameters_metaclass($P_mc);
+		$meta->role_generator($P_rg);
+	}
+	else # standard Moose role
+	{
+		$meta = Moose::Util::MetaRole::apply_metaroles(
 			for => $caller,
 			role_metaroles => {
 				role => ['Sub::NonRole::Trait::Role'],
 			},
 		);
-		@{ $class_of->($caller)->non_role_methods } = @subs;
 	}
+	
+	@{ $meta->non_role_methods } = @subs;
 }
 
 my $made_it;
@@ -99,6 +118,23 @@ sub _mk_moose_trait
 			delete @return{ @{$self->non_role_methods} };
 			return keys %return;
 		};
+	};
+}
+
+my $made_it_param;
+sub _mk_moose_trait_param
+{
+	return if $made_it_param++;
+	eval q{
+		package Sub::NonRole::Trait::ParameterizableRole;
+		use Moose::Role;
+		with 'Sub::NonRole::Trait::Role';
+#		around generate_role => sub {
+#			my $orig = shift;
+#			my $self = shift;
+#			my $role = $self->$orig(@_);
+#			return $role;
+#		};
 	};
 }
 
@@ -144,8 +180,8 @@ The subs can still be called as:
    My::Role->other_function();
    My::Role::other_function();
 
-It should work with L<Role::Tiny>, L<Moo::Role> and L<Moose::Role>
-roles.
+It should work with L<Role::Tiny>, L<Moo::Role>, L<Moose::Role> and
+L<MooseX::Role::Parameterized> roles.
 
 =head2 Developer API
 
