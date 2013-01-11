@@ -10,3 +10,9 @@
 		item "Support for MooseX::Role::Parameterizable roles."^^Addition;
 	].
 
+`Sub-NonRole 0.003 cpan:TOBYINK`
+	issued  2013-01-11;
+	changeset [
+		item "Document issue in older Perls where packages crash if they import Sub::NonRole without applying the attibute to any subs."^^Documentation;
+		item "Avoid triggering this issue in test suite."^^Bugfix;
+	].

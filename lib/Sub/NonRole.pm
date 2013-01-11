@@ -5,7 +5,7 @@ use strict;
 
 BEGIN {
 	$Sub::NonRole::AUTHORITY = 'cpan:TOBYINK';
-	$Sub::NonRole::VERSION   = '0.002';
+	$Sub::NonRole::VERSION   = '0.003';
 }
 
 use Hook::AfterRuntime;
