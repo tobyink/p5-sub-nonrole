@@ -17,8 +17,18 @@ the same terms as the Perl 5 programming language system itself.
 
 use Test::More tests => 1;
 
-package Foo;
-use Moo::Role;
-use Sub::NonRole;
-::pass();
+{
+	package Local::Role;
+	use Moo::Role;
+	use Sub::NonRole;
+	sub zzz :NonRole { 1 };
+}
 
+{
+	package Local::Class;
+	use Moo;
+	with qw< Local::Role >;
+}
+
+my $o = Local::Class->new;
+ok not $o->can('zzz');
