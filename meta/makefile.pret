@@ -1,0 +1,11 @@
+@prefix deps:  <http://ontologi.es/doap-deps#> .
+
+<http://purl.org/NET/cpan-uri/dist/Sub-NonRole/project>
+	deps:runtime-requirement         [ deps:on "Hook::AfterRuntime 0"^^deps:CpanId ];
+	deps:runtime-requirement         [ deps:on "MooX::CaptainHook 0.004"^^deps:CpanId ];
+	deps:runtime-requirement         [ deps:on "Sub::Identify 0"^^deps:CpanId ];
+	deps:runtime-requirement         [ deps:on "Sub::Talisman 0"^^deps:CpanId ];
+	deps:test-requirement            [ deps:on "Moo 1.000000"^^deps:CpanId ];
+	deps:test-requirement            [ deps:on "Moo::Role 0"^^deps:CpanId ];
+	deps:test-requirement            [ deps:on "Test::Requires 0"^^deps:CpanId ].
+
