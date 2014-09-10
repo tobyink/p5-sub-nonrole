@@ -16,3 +16,10 @@
 		item "Document issue in older Perls where packages crash if they import Sub::NonRole without applying the attibute to any subs."^^Documentation;
 		item "Avoid triggering this issue in test suite."^^Bugfix;
 	].
+
+`Sub-NonRole 0.004 cpan:TOBYINK`
+	issued    2014-09-10;
+	changeset [
+		item "Switch to Dist::Inkt."^^Packaging;
+	].
+
