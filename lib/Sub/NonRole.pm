@@ -2,6 +2,7 @@ package Sub::NonRole;
 
 use 5.008;
 use strict;
+use warnings;
 
 BEGIN {
 	$Sub::NonRole::AUTHORITY = 'cpan:TOBYINK';
