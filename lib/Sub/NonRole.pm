@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Sub::NonRole::AUTHORITY = 'cpan:TOBYINK';
-	$Sub::NonRole::VERSION   = '0.005';
+	$Sub::NonRole::VERSION   = '0.006';
 }
 
 use Hook::AfterRuntime;
