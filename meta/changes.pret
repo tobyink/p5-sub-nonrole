@@ -23,3 +23,9 @@
 		item "Switch to Dist::Inkt."^^Packaging;
 	].
 
+`Sub-NonRole 0.005 cpan:TOBYINK`
+	issued    2022-06-17;
+	changeset [
+		item "Use Role::Hooks instead of MooX::CaptainHook."^^Update;
+	].
+
