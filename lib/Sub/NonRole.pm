@@ -11,7 +11,6 @@ BEGIN {
 
 use Hook::AfterRuntime;
 use Role::Hooks 0.005;
-use Sub::Identify 'get_code_info';
 
 use base 'Sub::Talisman';
 

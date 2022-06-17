@@ -4,7 +4,6 @@
 	deps:runtime-requirement         [ deps:on "perl 5.008"^^deps:CpanId ];
 	deps:runtime-requirement         [ deps:on "Hook::AfterRuntime 0"^^deps:CpanId ];
 	deps:runtime-requirement         [ deps:on "Role::Hooks 0.005"^^deps:CpanId ];
-	deps:runtime-requirement         [ deps:on "Sub::Identify 0"^^deps:CpanId ];
 	deps:runtime-requirement         [ deps:on "Sub::Talisman 0"^^deps:CpanId ];
 	deps:test-requirement            [ deps:on "Moo 1.000000"^^deps:CpanId ];
 	deps:test-requirement            [ deps:on "Moo::Role 0"^^deps:CpanId ];
