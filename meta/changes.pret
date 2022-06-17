@@ -29,3 +29,9 @@
 		item "Use Role::Hooks instead of MooX::CaptainHook."^^Update;
 	].
 
+`Sub-NonRole 0.006 cpan:TOBYINK`
+	issued    2022-06-17;
+	changeset [
+		item "Remove dependency on Sub::Identity which has not been needed for a while."^^Packaging;
+	].
+
