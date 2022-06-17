@@ -7,5 +7,6 @@
 	deps:runtime-requirement         [ deps:on "Sub::Talisman 0"^^deps:CpanId ];
 	deps:test-requirement            [ deps:on "Moo 1.000000"^^deps:CpanId ];
 	deps:test-requirement            [ deps:on "Moo::Role 0"^^deps:CpanId ];
+	deps:test-recommendation         [ deps:on "Moose::Role 2"^^deps:CpanId ];
 	deps:test-requirement            [ deps:on "Test::Requires 0"^^deps:CpanId ].
 
